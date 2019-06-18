@@ -136,6 +136,11 @@ namespace Vernizze.Infra.CrossCutting.DataObjects.Results
 
         #region Constructors
 
+        public OperationResultWithError()
+        {
+            this.response_time = 0;
+        }
+
         public OperationResultWithError(OperationError error)
         {
             SetErrorDetails(error);
@@ -219,9 +224,15 @@ namespace Vernizze.Infra.CrossCutting.DataObjects.Results
 
         #region Private methods
 
-        private void SetErrorDetails(OperationError error)
+        private void SetErrorDetails()
         {
             this.errors.Clear();
+        }
+
+        private void SetErrorDetails(OperationError error)
+        {
+            this.SetErrorDetails();
+
             this.errors.Add(error);
         }
 
